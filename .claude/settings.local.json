@@ -5,7 +5,9 @@
       "Bash(if exist \".next\\dev\\lock\" del /F /Q \".next\\dev\\lock\")",
       "Bash(git branch:*)",
       "Bash(git push:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
