@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(powershell -Command:*)",
-      "Bash(if exist \".next\\dev\\lock\" del /F /Q \".next\\dev\\lock\")"
+      "Bash(if exist \".next\\dev\\lock\" del /F /Q \".next\\dev\\lock\")",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

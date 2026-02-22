@@ -7,9 +7,10 @@ export async function generateStaticParams() {
   return resources.map((r: any) => ({ slug: r.slug }));
 }
 
-export default async function ResourcePage({ params }: { params: { slug: string } }) {
+export default async function ResourcePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const general = getSettings('general') as any;
-  const { frontmatter, contentHtml } = await getMarkdownWithHtml('resources', params.slug);
+  const { frontmatter, contentHtml } = await getMarkdownWithHtml('resources', slug);
 
   return (
     <>

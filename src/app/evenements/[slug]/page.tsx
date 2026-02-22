@@ -7,9 +7,10 @@ export async function generateStaticParams() {
   return events.map((e: any) => ({ slug: e.slug }));
 }
 
-export default async function EventPage({ params }: { params: { slug: string } }) {
+export default async function EventPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const general = getSettings('general') as any;
-  const { frontmatter, contentHtml } = await getMarkdownWithHtml('events', params.slug);
+  const { frontmatter, contentHtml } = await getMarkdownWithHtml('events', slug);
   const fm = frontmatter as any;
 
   const date = new Date(fm.date);

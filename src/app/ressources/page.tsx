@@ -6,7 +6,7 @@ export default function ResourcesPage() {
   const general = getSettings('general') as any;
   const resources = getResources() as any[];
 
-  const categories = [...new Set(resources.map((r: any) => r.category))];
+  const categories = Array.from(new Set(resources.map((r: any) => r.category)));
 
   return (
     <>

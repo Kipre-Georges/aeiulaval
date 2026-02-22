@@ -7,9 +7,10 @@ export async function generateStaticParams() {
   return posts.map((p: any) => ({ slug: p.slug }));
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const general = getSettings('general') as any;
-  const { frontmatter, contentHtml } = await getMarkdownWithHtml('blog', params.slug);
+  const { frontmatter, contentHtml } = await getMarkdownWithHtml('blog', slug);
   const fm = frontmatter as any;
 
   const date = new Date(fm.date);

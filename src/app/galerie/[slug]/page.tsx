@@ -10,11 +10,12 @@ export async function generateStaticParams() {
   return albums.map((a: any) => ({ slug: a.slug }));
 }
 
-export default function GalleryDetailPage({ params }: { params: { slug: string } }) {
+export default async function GalleryDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const general = getSettings('general') as any;
 
   // Load the album data
-  const filePath = path.join(process.cwd(), 'content', 'gallery', `${params.slug}.md`);
+  const filePath = path.join(process.cwd(), 'content', 'gallery', `${slug}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data } = matter(fileContent);
   const album = data as any;
