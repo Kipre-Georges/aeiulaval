@@ -1,0 +1,21 @@
+{
+  "missionTitle": "Notre mission",
+  "missionText": "L'AEIULAVAL rassemble les étudiants ivoiriens et sympathisants autour de valeurs communes : l'entraide, la promotion culturelle et l'intégration réussie à la vie universitaire et québécoise.\n\nQue tu viennes d'arriver à Québec ou que tu sois ici depuis plusieurs sessions, notre communauté est là pour toi.",
+  "values": [
+    {
+      "icon": "🤝",
+      "title": "Solidarité",
+      "description": "Accueil des nouveaux arrivants, mentorat académique et soutien au quotidien"
+    },
+    {
+      "icon": "🎭",
+      "title": "Culture",
+      "description": "Promotion de la richesse culturelle ivoirienne à travers événements et activités"
+    },
+    {
+      "icon": "🎓",
+      "title": "Excellence",
+      "description": "Encourager la réussite académique et professionnelle de nos membres"
+    }
+  ]
+}

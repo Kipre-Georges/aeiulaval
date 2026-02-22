@@ -1,0 +1,17 @@
+{
+  "siteName": "AEIULAVAL",
+  "siteDescription": "Association des Étudiants Ivoiriens à l'Université Laval",
+  "heroTitle": "Bienvenue chez les Ivoiriens de Laval",
+  "heroSubtitle": "Association des Étudiants Ivoiriens à l'Université Laval",
+  "heroDescription": "Un espace de solidarité, de culture et d'entraide pour tous les étudiants ivoiriens et amis de la Côte d'Ivoire à Québec.",
+  "stats": {
+    "members": "120+",
+    "eventsPerYear": "15+",
+    "yearsActive": "8"
+  },
+  "social": {
+    "instagram": "",
+    "facebook": "",
+    "email": "aeiulaval@gmail.com"
+  }
+}

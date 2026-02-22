@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command:*)",
+      "Bash(if exist \".next\\dev\\lock\" del /F /Q \".next\\dev\\lock\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

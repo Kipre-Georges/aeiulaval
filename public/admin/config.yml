@@ -1,0 +1,142 @@
+# Pour production (Netlify), utiliser git-gateway:
+# backend:
+#   name: git-gateway
+#   branch: main
+
+# Pour développement local:
+backend:
+  name: proxy
+  proxy_url: http://localhost:8081/api/v1
+
+locale: 'fr'
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://aeiulaval.netlify.app
+
+collections:
+  # ═══ PARAMÈTRES DU SITE ═══
+  - name: "settings"
+    label: "⚙️ Paramètres du site"
+    files:
+      - name: "general"
+        label: "Paramètres généraux"
+        file: "content/settings/general.json"
+        fields:
+          - { name: "siteName", label: "Nom du site", widget: "string", default: "AEIULAVAL" }
+          - { name: "siteDescription", label: "Description", widget: "text" }
+          - { name: "heroTitle", label: "Titre du Hero", widget: "string" }
+          - { name: "heroSubtitle", label: "Sous-titre du Hero", widget: "string" }
+          - { name: "heroDescription", label: "Description du Hero", widget: "text" }
+          - name: "stats"
+            label: "Statistiques"
+            widget: "object"
+            fields:
+              - { name: "members", label: "Nombre de membres", widget: "string" }
+              - { name: "eventsPerYear", label: "Événements par an", widget: "string" }
+              - { name: "yearsActive", label: "Années d'existence", widget: "string" }
+          - name: "social"
+            label: "Réseaux sociaux"
+            widget: "object"
+            fields:
+              - { name: "instagram", label: "Instagram URL", widget: "string", required: false }
+              - { name: "facebook", label: "Facebook URL", widget: "string", required: false }
+              - { name: "email", label: "Email de contact", widget: "string" }
+
+      - name: "about"
+        label: "Page À propos"
+        file: "content/settings/about.json"
+        fields:
+          - { name: "missionTitle", label: "Titre de la mission", widget: "string" }
+          - { name: "missionText", label: "Texte de la mission", widget: "markdown" }
+          - name: "values"
+            label: "Valeurs"
+            widget: "list"
+            max: 4
+            fields:
+              - { name: "icon", label: "Emoji", widget: "string" }
+              - { name: "title", label: "Titre", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+
+  # ═══ BUREAU EXÉCUTIF ═══
+  - name: "bureau"
+    label: "👥 Bureau Exécutif"
+    folder: "content/bureau"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["order"]
+    fields:
+      - { name: "name", label: "Nom complet", widget: "string" }
+      - { name: "role", label: "Poste", widget: "string" }
+      - { name: "initials", label: "Initiales (pour l'avatar)", widget: "string" }
+      - { name: "photo", label: "Photo", widget: "image", required: false }
+      - { name: "order", label: "Ordre d'affichage (1 = premier)", widget: "number", value_type: "int", min: 1 }
+      - { name: "email", label: "Email", widget: "string", required: false }
+
+  # ═══ ÉVÉNEMENTS ═══
+  - name: "events"
+    label: "📅 Événements"
+    folder: "content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    sortable_fields: ["date"]
+    fields:
+      - { name: "title", label: "Titre", widget: "string" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "endDate", label: "Date de fin", widget: "datetime", required: false }
+      - { name: "location", label: "Lieu", widget: "string" }
+      - { name: "category", label: "Catégorie", widget: "select", options: ["Culturel", "Intégration", "Académique", "Social", "Sport", "Autre"] }
+      - { name: "description", label: "Description courte", widget: "text" }
+      - { name: "body", label: "Détails", widget: "markdown", required: false }
+      - { name: "image", label: "Image", widget: "image", required: false }
+      - { name: "registrationUrl", label: "Lien d'inscription", widget: "string", required: false }
+      - { name: "isFree", label: "Entrée libre", widget: "boolean", default: true }
+      - { name: "price", label: "Prix (si payant)", widget: "string", required: false }
+      - { name: "featured", label: "Mettre en avant", widget: "boolean", default: false }
+
+  # ═══ RESSOURCES ═══
+  - name: "resources"
+    label: "📚 Ressources"
+    folder: "content/resources"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Titre", widget: "string" }
+      - { name: "icon", label: "Emoji", widget: "string" }
+      - { name: "summary", label: "Résumé", widget: "text" }
+      - { name: "body", label: "Contenu complet", widget: "markdown" }
+      - { name: "order", label: "Ordre d'affichage", widget: "number", value_type: "int", min: 1 }
+      - { name: "category", label: "Catégorie", widget: "select", options: ["Logement", "Immigration", "Vie quotidienne", "Emploi", "Académique", "Santé"] }
+
+  # ═══ ACTUALITÉS / BLOG ═══
+  - name: "blog"
+    label: "📰 Actualités"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: "title", label: "Titre", widget: "string" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "author", label: "Auteur", widget: "string" }
+      - { name: "summary", label: "Résumé", widget: "text" }
+      - { name: "body", label: "Contenu", widget: "markdown" }
+      - { name: "image", label: "Image de couverture", widget: "image", required: false }
+      - { name: "tags", label: "Tags", widget: "list", required: false }
+
+  # ═══ GALERIE PHOTOS ═══
+  - name: "gallery"
+    label: "📸 Galerie"
+    folder: "content/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Titre de l'album", widget: "string" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "description", label: "Description", widget: "text", required: false }
+      - name: "photos"
+        label: "Photos"
+        widget: "list"
+        fields:
+          - { name: "image", label: "Photo", widget: "image" }
+          - { name: "caption", label: "Légende", widget: "string", required: false }
