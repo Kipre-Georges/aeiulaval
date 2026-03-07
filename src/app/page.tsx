@@ -195,7 +195,7 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-            <a href="/ressources" className="btn-glow btn-ghost" style={{ borderColor: 'var(--green)', color: 'var(--green-neon)' }}>Toutes les ressources →</a>
+            <a href="/ressources" className="btn-glow btn-ghost" style={{ borderColor: 'var(--green)', color: 'var(--green-deep)' }}>Toutes les ressources →</a>
           </div>
         </div>
       </section>

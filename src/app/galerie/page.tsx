@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { getSettings, getGallery } from '@/lib/content';
+
+export const metadata: Metadata = {
+  title: 'Galerie photos',
+  description: 'Photos et souvenirs des événements et activités de l\'association des étudiants ivoiriens à Laval.',
+};
 
 function formatDate(dateStr: string) {
   const d = new Date(dateStr);
@@ -98,7 +104,7 @@ export default function GalleryPage() {
                           fontFamily: "'Syne', sans-serif",
                           fontSize: '1.1rem',
                           fontWeight: 700,
-                          color: 'white',
+                          color: '#1A1A1A',
                           marginBottom: '0.3rem',
                         }}>
                           {album.title}

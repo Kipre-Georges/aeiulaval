@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { getSettings, getBlogPosts } from '@/lib/content';
+
+export const metadata: Metadata = {
+  title: 'Actualités',
+  description: 'Les dernières nouvelles de l\'association et de la communauté ivoirienne à l\'Université Laval.',
+};
 
 function formatDate(dateStr: string) {
   const d = new Date(dateStr);
@@ -84,7 +90,7 @@ export default function BlogPage() {
                         fontFamily: "'Syne', sans-serif",
                         fontSize: '1.3rem',
                         fontWeight: 700,
-                        color: 'white',
+                        color: '#1A1A1A',
                         marginBottom: '0.5rem',
                       }}>
                         {post.title}

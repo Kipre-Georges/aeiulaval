@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { getSettings, getResources } from '@/lib/content';
+
+export const metadata: Metadata = {
+  title: 'Ressources',
+  description: 'Guides et ressources essentielles pour les étudiants ivoiriens nouveaux arrivants à Québec : logement, immigration, emploi, santé.',
+};
 
 export default function ResourcesPage() {
   const general = getSettings('general') as any;

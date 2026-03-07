@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { getSettings, getEvents } from '@/lib/content';
+
+export const metadata: Metadata = {
+  title: 'Événements',
+  description: 'Retrouve l\'ensemble des activités et événements de l\'association des étudiants ivoiriens à l\'Université Laval.',
+};
 
 function formatDate(dateStr: string) {
   const d = new Date(dateStr);
@@ -47,7 +53,7 @@ export default function EventsPage() {
                 fontFamily: "'Syne', sans-serif",
                 fontSize: '1.4rem',
                 fontWeight: 700,
-                color: 'var(--green-neon)',
+                color: 'var(--green)',
                 marginBottom: '2rem',
                 display: 'flex',
                 alignItems: 'center',
