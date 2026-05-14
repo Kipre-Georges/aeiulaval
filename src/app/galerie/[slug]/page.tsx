@@ -11,7 +11,8 @@ export async function generateStaticParams() {
 }
 
 export default async function GalleryDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = decodeURIComponent(rawSlug);
   const general = getSettings('general') as any;
 
   // Load the album data
