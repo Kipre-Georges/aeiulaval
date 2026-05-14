@@ -6,6 +6,6 @@
   "colorTextDim": "rgba(0,0,0,0.6)",
   "colorCard": "#F5F5F5",
   "borderRadius": "20px",
-  "fontHeading": "Syne",
-  "fontBody": "DM Sans"
+  "fontHeading": "Plus Jakarta Sans",
+  "fontBody": "Inter"
 }

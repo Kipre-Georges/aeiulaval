@@ -26,6 +26,9 @@ export default function Footer({ siteName }: FooterProps) {
       <div className="footer-copy">
         © {new Date().getFullYear()} Association des Étudiants Ivoiriens à l&apos;Université Laval. Tous droits réservés.
       </div>
+      <div className="footer-credit">
+        Développé avec ❤️ par <span className="footer-credit-name">le fils de Akouba</span>
+      </div>
     </footer>
   );
 }

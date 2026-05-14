@@ -41,16 +41,18 @@ collections:
           - name: "fontHeading"
             label: "Police des titres"
             widget: "select"
-            default: "Syne"
+            default: "Plus Jakarta Sans"
             hint: "Police utilisée pour les grands titres et accroches"
             options:
+              - { label: "Plus Jakarta Sans (corporate, premium)", value: "Plus Jakarta Sans" }
+              - { label: "Inter (épuré, type Stripe)", value: "Inter" }
+              - { label: "Manrope (corporate, géométrique)", value: "Manrope" }
+              - { label: "Space Grotesk (tech, moderne)", value: "Space Grotesk" }
               - { label: "Syne (moderne, géométrique)", value: "Syne" }
-              - { label: "Inter (épuré, lisible)", value: "Inter" }
               - { label: "Poppins (rond, amical)", value: "Poppins" }
               - { label: "Playfair Display (élégant, serif)", value: "Playfair Display" }
               - { label: "Montserrat (classique, propre)", value: "Montserrat" }
               - { label: "Bebas Neue (impact, condensé)", value: "Bebas Neue" }
-              - { label: "Space Grotesk (tech, moderne)", value: "Space Grotesk" }
               - { label: "Archivo Black (gras, fort)", value: "Archivo Black" }
           - name: "fontBody"
             label: "Police du texte"
