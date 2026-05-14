@@ -90,48 +90,73 @@ function SectionHero({ general, featuredEvent, sec }: any) {
   );
 }
 
-function SectionAbout({ about, bureau, sec }: any) {
+function SectionAbout({ about, sec }: any) {
   return (
     <section id="about" className="section-about">
-      <div className="about-layout">
-        <div>
-          <div className="sec-header">
-            <div className="sec-tag orange">Qui sommes-nous</div>
-            <h2>{sec?.title || "Unis par nos racines, tournés vers l'avenir"}</h2>
-          </div>
-          <div className="about-text">
-            {about.missionText?.split('\n\n').map((p: string, i: number) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
-          <div className="values-grid">
-            {about.values?.map((v: any, i: number) => (
-              <div className="value-card" key={i}>
-                <div className="value-emoji">{v.icon}</div>
-                <div>
-                  <strong>{v.title}</strong>
-                  <span>{v.description}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="about-layout-solo">
+        <div className="sec-header">
+          <div className="sec-tag orange">Qui sommes-nous</div>
+          <h2>{sec?.title || "Unis par nos racines, tournés vers l'avenir"}</h2>
         </div>
-        <div className="bureau-section">
-          <div className="sec-header">
-            <div className="sec-tag green">Le Bureau</div>
-            <h2>Notre équipe</h2>
-          </div>
-          <div className="bureau-grid">
-            {bureau.map((m: any) => (
-              <div className="bureau-card" key={m.slug}>
-                <div className="bureau-avatar">
-                  {m.photo ? <img src={m.photo} alt={m.photoAlt || `Portrait de ${m.name}, ${m.role}`} /> : m.initials}
-                </div>
-                <h4>{m.name}</h4>
-                <p>{m.role}</p>
+        <div className="about-text">
+          {about.missionText?.split('\n\n').map((p: string, i: number) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+        <div className="values-grid">
+          {about.values?.map((v: any, i: number) => (
+            <div className="value-card" key={i}>
+              <div className="value-emoji">{v.icon}</div>
+              <div>
+                <strong>{v.title}</strong>
+                <span>{v.description}</span>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SectionBureau({ bureau, sec }: any) {
+  return (
+    <section id="bureau" className="section-bureau">
+      <div className="bureau-stars" aria-hidden="true" />
+      <div className="bureau-orb bureau-orb-1" aria-hidden="true" />
+      <div className="bureau-orb bureau-orb-2" aria-hidden="true" />
+      <div className="bureau-orb bureau-orb-3" aria-hidden="true" />
+
+      <div className="bureau-inner">
+        <div className="sec-header center">
+          <div className="sec-tag green">Le Bureau Exécutif</div>
+          <h2>{sec?.title || 'Les visages de la communauté'}</h2>
+          {sec?.subtitle && <p>{sec.subtitle}</p>}
+        </div>
+
+        <div className="bureau-mega-grid">
+          {bureau.map((m: any, i: number) => (
+            <article className="bureau-mega-card" key={m.slug} style={{ animationDelay: `${i * 0.08}s` }}>
+              <div className="bureau-mega-border" />
+              <div className="bureau-mega-photo">
+                {m.photo ? (
+                  <img src={m.photo} alt={m.photoAlt || `Portrait de ${m.name}, ${m.role}`} />
+                ) : (
+                  <span className="bureau-mega-initials">{m.initials}</span>
+                )}
+                <div className="bureau-mega-glow" />
+              </div>
+              <div className="bureau-mega-info">
+                <div className="bureau-mega-role">{m.role}</div>
+                <h3 className="bureau-mega-name">{m.name}</h3>
+                {m.email && (
+                  <a href={`mailto:${m.email}`} className="bureau-mega-mail" aria-label={`Contacter ${m.name}`}>
+                    ✉️ {m.email}
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -236,19 +261,25 @@ export default function Home() {
   const featuredEvent = events.find((e: any) => e.featured) || events[0];
   const upcomingEvents = events.slice(0, 3);
 
-  const sections = homepage.sections || [
+  const defaultSections = [
     { id: 'hero', visible: true },
     { id: 'about', visible: true },
+    { id: 'bureau', visible: true },
     { id: 'events', visible: true },
     { id: 'resources', visible: true },
     { id: 'contact', visible: true },
   ];
+  const userSections = homepage.sections || [];
+  // Merge defaults with user config — adds missing sections (like bureau) without losing custom order
+  const sections = defaultSections.map(def => userSections.find((s: any) => s.id === def.id) || def)
+    .concat(userSections.filter((s: any) => !defaultSections.some(d => d.id === s.id)));
 
   const renderSection = (sec: any) => {
     if (!sec.visible) return null;
     switch (sec.id) {
       case 'hero':     return <SectionHero key="hero" general={general} featuredEvent={featuredEvent} sec={sec} />;
-      case 'about':    return <SectionAbout key="about" about={about} bureau={bureau} sec={sec} />;
+      case 'about':    return <SectionAbout key="about" about={about} sec={sec} />;
+      case 'bureau':   return <SectionBureau key="bureau" bureau={bureau} sec={sec} />;
       case 'events':   return <SectionEvents key="events" events={upcomingEvents} sec={sec} />;
       case 'resources': return <SectionResources key="resources" resources={resources} sec={sec} />;
       case 'contact':  return <SectionContact key="contact" general={general} sec={sec} />;
