@@ -1,0 +1,9 @@
+{
+  "sections": [
+    { "id": "hero", "label": "Hero", "visible": true, "title": "La communauté ivoirienne de Laval", "subtitle": "" },
+    { "id": "about", "label": "Qui sommes-nous", "visible": true, "title": "Unis par nos racines, tournés vers l'avenir", "subtitle": "" },
+    { "id": "events", "label": "Événements", "visible": true, "title": "Des moments qui rassemblent", "subtitle": "Culture, partage et bonne ambiance — voici ce qui nous anime." },
+    { "id": "resources", "label": "Ressources", "visible": true, "title": "Tout pour bien s'installer", "subtitle": "Les ressources essentielles pour réussir ta transition vers la vie à Québec." },
+    { "id": "contact", "label": "Contact", "visible": true, "title": "Fais partie de la famille", "subtitle": "Que tu sois ivoirien ou simplement curieux de notre culture, tu es le bienvenu. Akwaba !" }
+  ]
+}

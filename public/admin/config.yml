@@ -39,6 +39,21 @@ collections:
               - { label: "Arrondi (défaut)", value: "20px" }
               - { label: "Très arrondi", value: "32px" }
 
+      - name: "homepage"
+        label: "🏠 Page d'accueil"
+        file: "content/settings/homepage.json"
+        fields:
+          - name: "sections"
+            label: "Sections"
+            widget: "list"
+            hint: "Réorganisez les sections par glisser-déposer. Activez ou désactivez chaque section."
+            fields:
+              - { name: "id", label: "ID (ne pas modifier)", widget: "hidden" }
+              - { name: "label", label: "Nom de la section", widget: "string" }
+              - { name: "visible", label: "Afficher cette section", widget: "boolean", default: true }
+              - { name: "title", label: "Titre", widget: "string", required: false }
+              - { name: "subtitle", label: "Sous-titre", widget: "text", required: false }
+
       - name: "general"
         label: "Paramètres généraux"
         file: "content/settings/general.json"
