@@ -263,8 +263,7 @@ export default function Home() {
     .filter((e: any) => new Date(e.endDate || e.date) >= now)
     .sort((a: any, b: any) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-  // Featured override > next upcoming > most recent past event (fallback)
-  const featuredEvent = events.find((e: any) => e.featured) || upcoming[0] || events[0];
+  const featuredEvent = upcoming[0] || events[0];
   const upcomingEvents = (upcoming.length > 0 ? upcoming : events).slice(0, 3);
 
   const defaultSections = [

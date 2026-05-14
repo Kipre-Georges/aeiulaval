@@ -157,7 +157,6 @@ collections:
       - { name: "registrationUrl", label: "Lien d'inscription", widget: "string", required: false }
       - { name: "isFree", label: "Entrée libre", widget: "boolean", default: true }
       - { name: "price", label: "Prix (si payant)", widget: "string", required: false }
-      - { name: "featured", label: "Mettre en avant", widget: "boolean", default: false }
 
   # ═══ RESSOURCES ═══
   - name: "resources"
