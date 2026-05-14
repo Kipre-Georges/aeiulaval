@@ -20,6 +20,25 @@ collections:
   - name: "settings"
     label: "⚙️ Paramètres du site"
     files:
+      - name: "theme"
+        label: "🎨 Thème & Couleurs"
+        file: "content/settings/theme.json"
+        fields:
+          - { name: "colorPrimary", label: "Couleur principale (orange)", widget: "color", default: "#FF6B2B", hint: "Couleur des boutons, accents et éléments principaux" }
+          - { name: "colorSecondary", label: "Couleur secondaire (vert)", widget: "color", default: "#00C853", hint: "Couleur des badges et éléments secondaires" }
+          - { name: "colorBackground", label: "Couleur de fond", widget: "color", default: "#FFFFFF", hint: "Couleur de fond du site" }
+          - { name: "colorText", label: "Couleur du texte principal", widget: "color", default: "#1A1A1A" }
+          - { name: "colorCard", label: "Couleur des cartes", widget: "color", default: "#F5F5F5" }
+          - name: "borderRadius"
+            label: "Arrondi des coins"
+            widget: "select"
+            default: "20px"
+            options:
+              - { label: "Carré", value: "4px" }
+              - { label: "Légèrement arrondi", value: "10px" }
+              - { label: "Arrondi (défaut)", value: "20px" }
+              - { label: "Très arrondi", value: "32px" }
+
       - name: "general"
         label: "Paramètres généraux"
         file: "content/settings/general.json"

@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { getSettings } from '@/lib/content';
 
 const siteUrl = 'https://ivoirienlaval.netlify.app';
 
@@ -31,8 +32,20 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const theme = getSettings('theme');
+  const cssVars = theme.colorPrimary ? {
+    '--orange': theme.colorPrimary,
+    '--orange-soft': theme.colorPrimary,
+    '--green': theme.colorSecondary,
+    '--green-neon': theme.colorSecondary,
+    '--dark': theme.colorBackground,
+    '--text': theme.colorText,
+    '--dark-card': theme.colorCard,
+    '--radius': theme.borderRadius,
+  } as React.CSSProperties : {};
+
   return (
-    <html lang="fr">
+    <html lang="fr" style={cssVars}>
       <body>
         {children}
         <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="afterInteractive" />

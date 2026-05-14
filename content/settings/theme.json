@@ -1,0 +1,9 @@
+{
+  "colorPrimary": "#FF6B2B",
+  "colorSecondary": "#00C853",
+  "colorBackground": "#FFFFFF",
+  "colorText": "#1A1A1A",
+  "colorTextDim": "rgba(0,0,0,0.6)",
+  "colorCard": "#F5F5F5",
+  "borderRadius": "20px"
+}

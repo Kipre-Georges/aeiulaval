@@ -1,0 +1,182 @@
+/* ── Decap CMS Custom Theme ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap');
+
+:root {
+  --accent: #FF6B2B;
+  --accent-hover: #e55a1f;
+  --green: #00C853;
+  --bg: #0f0f0f;
+  --bg-card: #1a1a1a;
+  --bg-sidebar: #111111;
+  --border: rgba(255,255,255,0.08);
+  --text: #f0f0f0;
+  --text-dim: rgba(255,255,255,0.5);
+  --radius: 12px;
+}
+
+/* Base */
+body, #nc-root {
+  font-family: 'DM Sans', sans-serif !important;
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* App bar / header */
+header[class*="AppHeader"],
+div[class*="AppHeader"] {
+  background: var(--bg-sidebar) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: none !important;
+}
+
+/* Sidebar */
+nav[class*="Nav"],
+aside[class*="sidebar"],
+div[class*="Sidebar"] {
+  background: var(--bg-sidebar) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+/* Sidebar links */
+a[class*="NavLink"],
+div[class*="NavLink"] {
+  color: var(--text-dim) !important;
+  border-radius: var(--radius) !important;
+  transition: all 0.2s ease !important;
+  font-weight: 500 !important;
+}
+
+a[class*="NavLink"]:hover,
+a[class*="NavLink"][class*="active"],
+div[class*="NavLink"][class*="active"] {
+  background: rgba(255,107,43,0.12) !important;
+  color: var(--accent) !important;
+}
+
+/* Main content area */
+div[class*="Collection"],
+div[class*="Editor"],
+main {
+  background: var(--bg) !important;
+}
+
+/* Cards / list items */
+div[class*="ListCard"],
+div[class*="EntryCard"],
+article[class*="Card"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+  transition: border-color 0.2s ease !important;
+}
+
+div[class*="ListCard"]:hover,
+div[class*="EntryCard"]:hover {
+  border-color: var(--accent) !important;
+}
+
+/* Buttons */
+button[class*="Button"]:not([class*="delete"]):not([class*="danger"]) {
+  background: var(--accent) !important;
+  color: white !important;
+  border-radius: var(--radius) !important;
+  border: none !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 600 !important;
+  transition: background 0.2s ease !important;
+}
+
+button[class*="Button"]:not([class*="delete"]):not([class*="danger"]):hover {
+  background: var(--accent-hover) !important;
+}
+
+/* Secondary/ghost buttons */
+button[class*="secondary"],
+button[class*="outline"] {
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+textarea,
+select,
+div[class*="CodeMirror"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  color: var(--text) !important;
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(255,107,43,0.15) !important;
+}
+
+/* Labels */
+label,
+span[class*="label"],
+div[class*="FieldLabel"] {
+  color: var(--text-dim) !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Toolbar (rich text editor) */
+div[class*="Toolbar"],
+div[class*="toolbar"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) var(--radius) 0 0 !important;
+}
+
+/* Rich text editor body */
+div[class*="EditorControl"],
+div[class*="editor-preview"] {
+  background: var(--bg-card) !important;
+  color: var(--text) !important;
+}
+
+/* Collection titles */
+h1, h2, h3 {
+  font-family: 'Syne', sans-serif !important;
+  color: var(--text) !important;
+}
+
+/* Login page */
+div[class*="AuthenticationPage"] {
+  background: var(--bg) !important;
+}
+
+div[class*="AuthenticationPage"] button {
+  background: var(--accent) !important;
+  border-radius: var(--radius) !important;
+  font-weight: 600 !important;
+  padding: 12px 24px !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Toast notifications */
+div[class*="Toast"],
+div[class*="toast"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  color: var(--text) !important;
+}
