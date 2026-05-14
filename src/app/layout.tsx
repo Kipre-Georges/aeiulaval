@@ -5,25 +5,36 @@ import { getSettings } from '@/lib/content';
 
 const siteUrl = 'https://ivoirienlaval.netlify.app';
 
+const sharedDescription = 'Communauté étudiante ivoirienne à l\'Université Laval (Québec) : événements culturels, entraide, ressources pour nouveaux arrivants et accompagnement. Akwaba !';
+
 export const metadata: Metadata = {
   title: {
-    default: 'AEIULAVAL — Association des Étudiants Ivoiriens à l\'Université Laval',
+    default: 'AEIULAVAL — Étudiants Ivoiriens à l\'Université Laval',
     template: '%s | AEIULAVAL',
   },
-  description: 'Un espace de solidarité, de culture et d\'entraide pour tous les étudiants ivoiriens et amis de la Côte d\'Ivoire à Québec.',
+  description: sharedDescription,
   metadataBase: new URL(siteUrl),
   openGraph: {
     type: 'website',
     locale: 'fr_CA',
     url: siteUrl,
     siteName: 'AEIULAVAL',
-    title: 'AEIULAVAL — Association des Étudiants Ivoiriens à l\'Université Laval',
-    description: 'Solidarité, culture et entraide pour les étudiants ivoiriens à Québec.',
+    title: 'AEIULAVAL — Étudiants Ivoiriens à l\'Université Laval',
+    description: sharedDescription,
+    images: [
+      {
+        url: `${siteUrl}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: 'AEIULAVAL — La communauté ivoirienne de Laval',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AEIULAVAL',
-    description: 'Solidarité, culture et entraide pour les étudiants ivoiriens à Québec.',
+    title: 'AEIULAVAL — Étudiants Ivoiriens à l\'Université Laval',
+    description: sharedDescription,
+    images: [`${siteUrl}/opengraph-image`],
   },
   robots: {
     index: true,
