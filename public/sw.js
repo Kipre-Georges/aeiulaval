@@ -1,5 +1,8 @@
-// AEIULAVAL Service Worker — basic offline support
-const CACHE_NAME = 'aeiulaval-v1';
+// AEIULAVAL Service Worker — OneSignal push + offline cache
+// IMPORTANT: OneSignal SDK must be imported FIRST
+importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');
+
+const CACHE_NAME = 'aeiulaval-v2';
 const OFFLINE_URLS = ['/', '/evenements', '/ressources', '/blog', '/galerie'];
 
 self.addEventListener('install', (event) => {
@@ -19,7 +22,6 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Skip non-GET, admin requests, and external requests
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
   if (url.pathname.startsWith('/admin')) return;
@@ -28,7 +30,6 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        // Cache successful responses for next time
         if (response.ok && response.type === 'basic') {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
