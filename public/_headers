@@ -1,3 +1,19 @@
 /opengraph-image
   Content-Type: image/png
   Cache-Control: public, max-age=3600
+
+/icon
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
+/apple-icon
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+  Service-Worker-Allowed: /
+
+/manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: public, max-age=3600

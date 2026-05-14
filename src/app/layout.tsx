@@ -1,7 +1,8 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import { getSettings } from '@/lib/content';
+import InstallPrompt from '@/components/InstallPrompt';
 
 const siteUrl = 'https://ivoirienlaval.netlify.app';
 
@@ -40,6 +41,17 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  appleWebApp: {
+    capable: true,
+    title: 'AEIULAVAL',
+    statusBarStyle: 'default',
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#FF6B2B',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -96,6 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         {children}
+        <InstallPrompt />
         <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="afterInteractive" />
         <Script id="netlify-identity-redirect" strategy="afterInteractive">
           {`
