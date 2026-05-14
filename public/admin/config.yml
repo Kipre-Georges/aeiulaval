@@ -133,6 +133,7 @@ collections:
       - { name: "role", label: "Poste", widget: "string" }
       - { name: "initials", label: "Initiales (pour l'avatar)", widget: "string" }
       - { name: "photo", label: "Photo", widget: "image", required: false }
+      - { name: "photoAlt", label: "Description de la photo (accessibilité)", widget: "string", required: false, hint: "Décrivez l'image pour les personnes non-voyantes" }
       - { name: "order", label: "Ordre d'affichage (1 = premier)", widget: "number", value_type: "int", min: 1 }
       - { name: "email", label: "Email", widget: "string", required: false }
 
@@ -152,6 +153,7 @@ collections:
       - { name: "description", label: "Description courte", widget: "text" }
       - { name: "body", label: "Détails", widget: "markdown", required: false }
       - { name: "image", label: "Image", widget: "image", required: false }
+      - { name: "imageAlt", label: "Description de l'image (accessibilité)", widget: "string", required: false, hint: "Décrivez l'image pour les personnes non-voyantes" }
       - { name: "registrationUrl", label: "Lien d'inscription", widget: "string", required: false }
       - { name: "isFree", label: "Entrée libre", widget: "boolean", default: true }
       - { name: "price", label: "Prix (si payant)", widget: "string", required: false }

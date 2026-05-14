@@ -19,8 +19,34 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
     weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
   });
 
+  const eventSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: fm.title,
+    startDate: fm.date,
+    ...(fm.endDate && { endDate: fm.endDate }),
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: fm.location,
+      address: { '@type': 'PostalAddress', addressLocality: 'Québec', addressRegion: 'QC', addressCountry: 'CA' },
+    },
+    description: fm.description,
+    organizer: { '@type': 'Organization', name: 'AEIULAVAL', url: 'https://ivoirienlaval.netlify.app' },
+    ...(fm.image && { image: [fm.image] }),
+    offers: {
+      '@type': 'Offer',
+      price: fm.isFree ? '0' : (fm.price || '0'),
+      priceCurrency: 'CAD',
+      availability: 'https://schema.org/InStock',
+      url: `https://ivoirienlaval.netlify.app/evenements/${slug}`,
+    },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
       <Nav siteName={general.siteName || 'AEIULAVAL'} />
       <div className="content-page">
         <a href="/#events" className="back-link">← Retour aux événements</a>

@@ -64,6 +64,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="stylesheet" href={googleFontsUrl} />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'AEIULAVAL',
+              alternateName: 'Association des Étudiants Ivoiriens à l\'Université Laval',
+              url: siteUrl,
+              logo: `${siteUrl}/opengraph-image`,
+              description: 'Un espace de solidarité, de culture et d\'entraide pour tous les étudiants ivoiriens et amis de la Côte d\'Ivoire à Québec.',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Québec',
+                addressRegion: 'QC',
+                addressCountry: 'CA',
+              },
+            }),
+          }}
+        />
         {children}
         <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="afterInteractive" />
         <Script id="netlify-identity-redirect" strategy="afterInteractive">

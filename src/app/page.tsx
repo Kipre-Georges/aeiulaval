@@ -125,7 +125,7 @@ function SectionAbout({ about, bureau, sec }: any) {
             {bureau.map((m: any) => (
               <div className="bureau-card" key={m.slug}>
                 <div className="bureau-avatar">
-                  {m.photo ? <img src={m.photo} alt={m.name} /> : m.initials}
+                  {m.photo ? <img src={m.photo} alt={m.photoAlt || `Portrait de ${m.name}, ${m.role}`} /> : m.initials}
                 </div>
                 <h4>{m.name}</h4>
                 <p>{m.role}</p>

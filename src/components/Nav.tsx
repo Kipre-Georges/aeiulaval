@@ -27,11 +27,17 @@ export default function Nav({ siteName }: NavProps) {
         <span>{siteName}</span>
       </a>
 
-      <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
-        <span /><span /><span />
+      <button
+        className="mobile-menu-btn"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+        aria-expanded={menuOpen}
+        aria-controls="primary-navigation"
+      >
+        <span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" />
       </button>
 
-      <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+      <ul id="primary-navigation" className={`nav-links ${menuOpen ? 'open' : ''}`}>
         <li><a href="/#about" onClick={() => setMenuOpen(false)}>À propos</a></li>
         <li><a href="/evenements" onClick={() => setMenuOpen(false)}>Événements</a></li>
         <li><a href="/ressources" onClick={() => setMenuOpen(false)}>Ressources</a></li>
