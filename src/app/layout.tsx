@@ -33,19 +33,36 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const theme = getSettings('theme');
-  const cssVars = theme.colorPrimary ? {
-    '--orange': theme.colorPrimary,
-    '--orange-soft': theme.colorPrimary,
-    '--green': theme.colorSecondary,
-    '--green-neon': theme.colorSecondary,
-    '--dark': theme.colorBackground,
-    '--text': theme.colorText,
-    '--dark-card': theme.colorCard,
-    '--radius': theme.borderRadius,
-  } as React.CSSProperties : {};
+  const fontHeading = theme.fontHeading || 'Syne';
+  const fontBody = theme.fontBody || 'DM Sans';
+
+  const cssVars = {
+    ...(theme.colorPrimary && {
+      '--orange': theme.colorPrimary,
+      '--orange-soft': theme.colorPrimary,
+      '--green': theme.colorSecondary,
+      '--green-neon': theme.colorSecondary,
+      '--dark': theme.colorBackground,
+      '--text': theme.colorText,
+      '--dark-card': theme.colorCard,
+      '--radius': theme.borderRadius,
+    }),
+    '--font-heading': `'${fontHeading}', sans-serif`,
+    '--font-body': `'${fontBody}', sans-serif`,
+  } as React.CSSProperties;
+
+  const fontsToLoad = Array.from(new Set([fontHeading, fontBody]))
+    .map(f => `family=${encodeURIComponent(f)}:wght@400;500;600;700;800`)
+    .join('&');
+  const googleFontsUrl = `https://fonts.googleapis.com/css2?${fontsToLoad}&display=swap`;
 
   return (
     <html lang="fr" style={cssVars}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href={googleFontsUrl} />
+      </head>
       <body>
         {children}
         <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="afterInteractive" />

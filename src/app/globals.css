@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
-
 :root {
+    --font-heading: 'Syne', sans-serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
     --orange: #FF6B2B;
     --orange-soft: #FF8F5E;
     --green: #00C853;
@@ -22,7 +22,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'DM Sans', -apple-system, sans-serif;
+    font-family: var(--font-body);
     background: var(--dark);
     color: var(--text);
     overflow-x: hidden;
@@ -58,7 +58,7 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
 .logo-mark .lo { background: var(--orange); }
 .logo-mark .lw { background: #EAEAEA; }
 .logo-mark .lg { background: var(--green); }
-.nav-logo span { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
+.nav-logo span { font-family: var(--font-heading); font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
 
 .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
 .nav-links a { text-decoration: none; color: var(--text-dim); font-weight: 500; font-size: 0.88rem; transition: color 0.3s; }
@@ -116,7 +116,7 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
 .hero-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
 
-.hero h1 { font-family: 'Syne', sans-serif; font-size: 4.5rem; font-weight: 800; line-height: 1.05; letter-spacing: -2px; margin-bottom: 1.5rem; color: #1A1A1A; }
+.hero h1 { font-family: var(--font-heading); font-size: 4.5rem; font-weight: 800; line-height: 1.05; letter-spacing: -2px; margin-bottom: 1.5rem; color: #1A1A1A; }
 .hero h1 .line { display: block; }
 .hero h1 .grad-orange { background: linear-gradient(135deg, var(--orange), #FFB347); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .hero h1 .grad-green { background: linear-gradient(135deg, var(--green), var(--green-neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -152,14 +152,14 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
 .card-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--text-dim); font-weight: 600; margin-bottom: 1.8rem; }
 .card-event { display: flex; gap: 1.2rem; align-items: center; margin-bottom: 1.2rem; }
 .card-date { background: linear-gradient(135deg, var(--orange), var(--orange-soft)); padding: 0.8rem 1rem; border-radius: var(--radius-sm); text-align: center; min-width: 68px; }
-.card-date .d { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; line-height: 1; color: white; /* kept white on orange bg */ }
+.card-date .d { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; line-height: 1; color: white; /* kept white on orange bg */ }
 .card-date .m { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; color: rgba(255,255,255,0.8); }
-.card-event-info h3 { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; color: #1A1A1A; }
+.card-event-info h3 { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: #1A1A1A; }
 .card-event-info p { color: var(--text-dim); font-size: 0.88rem; margin-top: 0.15rem; }
 .card-meta { display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--text-dimmer); margin-bottom: 2rem; }
 .card-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--dark-border); }
 .card-stat { text-align: center; }
-.card-stat-num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--green), var(--green-neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.card-stat-num { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--green), var(--green-neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .card-stat-label { font-size: 0.72rem; color: var(--text-dimmer); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.1rem; }
 
 .akwaba-badge {
@@ -167,7 +167,7 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
     background: linear-gradient(135deg, var(--green-deep), var(--green-neon));
     color: white; padding: 0.6rem 1.2rem; border-radius: 100px;
     font-weight: 700; font-size: 0.85rem; box-shadow: 0 8px 30px rgba(0, 200, 83, 0.3);
-    animation: float 4s ease-in-out infinite; font-family: 'Syne', sans-serif;
+    animation: float 4s ease-in-out infinite; font-family: var(--font-heading);
 }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
@@ -179,7 +179,7 @@ section { padding: 7rem 3rem; }
 .sec-tag.orange { color: var(--orange); }
 .sec-tag.green { color: var(--green); }
 .sec-tag::before { content: ''; width: 20px; height: 2px; border-radius: 2px; background: currentColor; }
-.sec-header h2 { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; color: #1A1A1A; }
+.sec-header h2 { font-family: var(--font-heading); font-size: 3rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; color: #1A1A1A; }
 .sec-header p { color: var(--text-dim); font-size: 1.05rem; line-height: 1.7; margin-top: 1rem; }
 
 /* ABOUT */
@@ -197,7 +197,7 @@ section { padding: 7rem 3rem; }
 .value-card:nth-child(2):hover { border-color: var(--green); }
 .value-card:nth-child(3):hover { border-color: var(--green-neon); }
 .value-emoji { font-size: 1.8rem; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.04); border-radius: 12px; flex-shrink: 0; }
-.value-card strong { display: block; font-family: 'Syne', sans-serif; font-weight: 700; color: #1A1A1A; font-size: 0.95rem; margin-bottom: 0.15rem; }
+.value-card strong { display: block; font-family: var(--font-heading); font-weight: 700; color: #1A1A1A; font-size: 0.95rem; margin-bottom: 0.15rem; }
 .value-card span { font-size: 0.85rem; color: var(--text-dim); line-height: 1.5; }
 
 /* BUREAU */
@@ -212,12 +212,12 @@ section { padding: 7rem 3rem; }
 .bureau-avatar {
     width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 0.8rem;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; color: white; /* kept white on gradient bg */
+    font-family: var(--font-heading); font-weight: 800; font-size: 1.3rem; color: white; /* kept white on gradient bg */
     background: linear-gradient(135deg, var(--orange), var(--green)); position: relative; overflow: hidden;
 }
 .bureau-avatar::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--glass-border); }
 .bureau-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.bureau-card h4 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #1A1A1A; }
+.bureau-card h4 { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: #1A1A1A; }
 .bureau-card p { font-size: 0.78rem; color: var(--text-dimmer); margin-top: 0.15rem; }
 
 /* EVENTS */
@@ -239,7 +239,7 @@ section { padding: 7rem 3rem; }
 .ev-badge.sport { background: rgba(0, 200, 83, 0.1); color: var(--green-deep); }
 .ev-badge.autre { background: rgba(0,0,0,0.06); color: var(--text-dim); }
 
-.ev-card h3 { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; color: #1A1A1A; margin-bottom: 0.6rem; }
+.ev-card h3 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: #1A1A1A; margin-bottom: 0.6rem; }
 .ev-card .ev-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.6; flex: 1; }
 .ev-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--dark-border); font-size: 0.8rem; color: var(--text-dimmer); }
 .ev-footer span { display: flex; align-items: center; gap: 0.3rem; }
@@ -256,7 +256,7 @@ section { padding: 7rem 3rem; }
 .res-card:hover { transform: translateY(-6px); border-color: var(--orange); box-shadow: 0 20px 50px rgba(255, 107, 43, 0.08); }
 .res-card:nth-child(even):hover { border-color: var(--green); box-shadow: 0 20px 50px rgba(0, 200, 83, 0.08); }
 .res-icon { font-size: 2rem; margin-bottom: 1.2rem; display: block; }
-.res-card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: #1A1A1A; margin-bottom: 0.5rem; }
+.res-card h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #1A1A1A; margin-bottom: 0.5rem; }
 .res-card p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; }
 .res-card .arrow { position: absolute; bottom: 2rem; right: 2rem; width: 32px; height: 32px; border-radius: 50%; background: var(--glass); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateX(-10px); transition: all 0.3s; color: #1A1A1A; font-size: 0.9rem; }
 .res-card:hover .arrow { opacity: 1; transform: translateX(0); }
@@ -266,7 +266,7 @@ section { padding: 7rem 3rem; }
 .cta-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--orange), #D4520F); opacity: 0.9; }
 .cta-mesh { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(0,200,83,0.25), transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(255,179,71,0.3), transparent 50%); }
 .cta-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; text-align: center; }
-.cta-inner h2 { font-family: 'Syne', sans-serif; font-size: 3.2rem; font-weight: 800; color: white; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 1rem; }
+.cta-inner h2 { font-family: var(--font-heading); font-size: 3.2rem; font-weight: 800; color: white; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 1rem; }
 .cta-inner p { color: rgba(255,255,255,0.8); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem; }
 .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 .cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 0.92rem; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -279,7 +279,7 @@ section { padding: 7rem 3rem; }
 footer { background: #F0F0F0; padding: 3rem 3rem 2rem; border-top: 1px solid var(--dark-border); }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 .footer-brand { display: flex; align-items: center; gap: 0.6rem; }
-.footer-brand span { font-family: 'Syne', sans-serif; font-weight: 800; color: #1A1A1A; font-size: 0.95rem; }
+.footer-brand span { font-family: var(--font-heading); font-weight: 800; color: #1A1A1A; font-size: 0.95rem; }
 .footer-nav { display: flex; gap: 2rem; }
 .footer-nav a { color: var(--text-dimmer); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
 .footer-nav a:hover { color: var(--orange-soft); }
@@ -287,10 +287,10 @@ footer { background: #F0F0F0; padding: 3rem 3rem 2rem; border-top: 1px solid var
 
 /* CONTENT PAGES */
 .content-page { max-width: 780px; margin: 0 auto; padding: 8rem 2rem 4rem; }
-.content-page h1 { font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800; color: #1A1A1A; margin-bottom: 1.5rem; letter-spacing: -1px; }
+.content-page h1 { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; color: #1A1A1A; margin-bottom: 1.5rem; letter-spacing: -1px; }
 .content-page .prose { line-height: 1.8; color: var(--text-dim); }
-.content-page .prose h2 { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: #1A1A1A; margin: 2rem 0 1rem; }
-.content-page .prose h3 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: #1A1A1A; margin: 1.5rem 0 0.75rem; }
+.content-page .prose h2 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #1A1A1A; margin: 2rem 0 1rem; }
+.content-page .prose h3 { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: #1A1A1A; margin: 1.5rem 0 0.75rem; }
 .content-page .prose p { margin-bottom: 1rem; }
 .content-page .prose ul, .content-page .prose ol { padding-left: 1.5rem; margin-bottom: 1rem; }
 .content-page .prose li { margin-bottom: 0.5rem; line-height: 1.7; }

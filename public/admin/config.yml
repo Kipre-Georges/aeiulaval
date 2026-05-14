@@ -38,6 +38,34 @@ collections:
               - { label: "Légèrement arrondi", value: "10px" }
               - { label: "Arrondi (défaut)", value: "20px" }
               - { label: "Très arrondi", value: "32px" }
+          - name: "fontHeading"
+            label: "Police des titres"
+            widget: "select"
+            default: "Syne"
+            hint: "Police utilisée pour les grands titres et accroches"
+            options:
+              - { label: "Syne (moderne, géométrique)", value: "Syne" }
+              - { label: "Inter (épuré, lisible)", value: "Inter" }
+              - { label: "Poppins (rond, amical)", value: "Poppins" }
+              - { label: "Playfair Display (élégant, serif)", value: "Playfair Display" }
+              - { label: "Montserrat (classique, propre)", value: "Montserrat" }
+              - { label: "Bebas Neue (impact, condensé)", value: "Bebas Neue" }
+              - { label: "Space Grotesk (tech, moderne)", value: "Space Grotesk" }
+              - { label: "Archivo Black (gras, fort)", value: "Archivo Black" }
+          - name: "fontBody"
+            label: "Police du texte"
+            widget: "select"
+            default: "DM Sans"
+            hint: "Police utilisée pour les paragraphes"
+            options:
+              - { label: "DM Sans (moderne)", value: "DM Sans" }
+              - { label: "Inter (épuré)", value: "Inter" }
+              - { label: "Roboto (classique)", value: "Roboto" }
+              - { label: "Open Sans (lisible)", value: "Open Sans" }
+              - { label: "Lato (doux)", value: "Lato" }
+              - { label: "Nunito (rond)", value: "Nunito" }
+              - { label: "Source Sans 3 (pro)", value: "Source Sans 3" }
+              - { label: "Manrope (géométrique)", value: "Manrope" }
 
       - name: "homepage"
         label: "🏠 Page d'accueil"
