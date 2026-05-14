@@ -72,15 +72,15 @@ export default function InstallPrompt() {
         <div className="pwa-icon-stripe" style={{ background: '#00C853' }} />
       </div>
       <div className="pwa-text">
-        <h4 id="pwa-title">Installe AEIULAVAL 🇨🇮</h4>
+        <h4 id="pwa-title">La famille à portée de main 🇨🇮</h4>
         {isIOS ? (
-          <p>Appuie sur <strong>Partager</strong> puis <strong>« Sur l'écran d'accueil »</strong> pour installer l'app.</p>
+          <p>Appuie sur <strong>Partager</strong> → <strong>« Sur l'écran d'accueil »</strong>. Les events, ressources et notifs te suivent partout.</p>
         ) : (
-          <p>Ajoute l'asso à ton écran d'accueil pour un accès rapide aux événements.</p>
+          <p>Installe l'app AEIULAVAL : retrouve les events, les ressources et la communauté en un clic depuis ton écran d'accueil.</p>
         )}
       </div>
       {!isIOS && (
-        <button className="pwa-btn" onClick={install}>Installer</button>
+        <button className="pwa-btn" onClick={install}>Akwaba 🚀</button>
       )}
     </div>
   );
