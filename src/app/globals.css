@@ -121,6 +121,19 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
 .hero h1 .grad-orange { background: linear-gradient(135deg, var(--orange), #FFB347); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .hero h1 .grad-green { background: linear-gradient(135deg, var(--green), var(--green-neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
+.hero-fullname {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
+    margin-bottom: 1.25rem;
+    padding: 0.4rem 0.9rem;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-left: 3px solid var(--orange);
+    border-radius: 6px;
+}
 .hero-desc { font-size: 1.15rem; line-height: 1.7; color: var(--text-dim); max-width: 480px; margin-bottom: 2.5rem; }
 .hero-btns { display: flex; gap: 1rem; align-items: center; }
 
@@ -448,8 +461,64 @@ section { padding: 7rem 3rem; }
 /* FOOTER */
 footer { background: #F0F0F0; padding: 3rem 3rem 2rem; border-top: 1px solid var(--dark-border); }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-.footer-brand { display: flex; align-items: center; gap: 0.6rem; }
-.footer-brand span { font-family: var(--font-heading); font-weight: 800; color: #1A1A1A; font-size: 0.95rem; }
+.footer-brand { display: flex; align-items: center; gap: 0.7rem; }
+.footer-brand-text { display: flex; flex-direction: column; gap: 0.1rem; }
+.footer-brand-text span { font-family: var(--font-heading); font-weight: 800; color: #1A1A1A; font-size: 0.95rem; line-height: 1.1; }
+.footer-brand-text small { font-size: 0.7rem; color: var(--text-dimmer); font-weight: 500; }
+
+/* Affiliation Université Laval */
+.footer-affiliation {
+    max-width: 1200px;
+    margin: 1.75rem auto 0;
+    padding-top: 1.75rem;
+    border-top: 1px dashed var(--dark-border);
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+}
+.footer-affiliation-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-dimmer);
+    font-weight: 700;
+}
+.footer-ulaval {
+    display: inline-flex; align-items: center; gap: 0.65rem;
+    padding: 0.55rem 1rem;
+    background: white;
+    border: 1px solid var(--dark-border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: #1A1A1A;
+    transition: all 0.25s ease;
+}
+.footer-ulaval:hover { border-color: #E40521; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(228,5,33,0.12); }
+.footer-ulaval-mark {
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #E40521, #B30019);
+    color: white;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    letter-spacing: -0.5px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+.footer-ulaval-text {
+    display: flex; flex-direction: column; gap: 0;
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 0.85rem;
+    line-height: 1.15;
+}
+.footer-ulaval-text small {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 0.7rem;
+    color: var(--text-dimmer);
+    margin-top: 0.05rem;
+}
 .footer-nav { display: flex; gap: 2rem; }
 .footer-nav a { color: var(--text-dimmer); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
 .footer-nav a:hover { color: var(--orange-soft); }

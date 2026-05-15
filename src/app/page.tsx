@@ -39,6 +39,7 @@ function SectionHero({ general, featuredEvent, sec }: any) {
             <span className="line grad-orange">ivoirienne</span>
             <span className="line">de <span className="grad-green">Laval</span></span>
           </h1>
+          <p className="hero-fullname">Association des Étudiants Ivoiriens à l&apos;Université Laval</p>
           <p className="hero-desc">{general.heroDescription}</p>
           <div className="hero-btns">
             <a href="#events" className="btn-glow btn-orange">Nos événements →</a>

@@ -12,7 +12,10 @@ export default function Footer({ siteName }: FooterProps) {
             <div className="lw" />
             <div className="lg" />
           </div>
-          <span>{siteName}</span>
+          <div className="footer-brand-text">
+            <span>{siteName}</span>
+            <small>Association des Étudiants Ivoiriens à l&apos;Université Laval</small>
+          </div>
         </div>
         <div className="footer-nav">
           <a href="/#about">À propos</a>
@@ -22,6 +25,13 @@ export default function Footer({ siteName }: FooterProps) {
           <a href="/galerie">Galerie</a>
           <a href="/#contact">Contact</a>
         </div>
+      </div>
+      <div className="footer-affiliation">
+        <span className="footer-affiliation-label">Affiliée à</span>
+        <a href="https://www.ulaval.ca" target="_blank" rel="noopener noreferrer" className="footer-ulaval">
+          <span className="footer-ulaval-mark">UL</span>
+          <span className="footer-ulaval-text">Université Laval<small>Québec, Canada</small></span>
+        </a>
       </div>
       <div className="footer-copy">
         © {new Date().getFullYear()} Association des Étudiants Ivoiriens à l&apos;Université Laval. Tous droits réservés.
