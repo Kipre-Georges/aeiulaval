@@ -28,9 +28,8 @@ export default function Footer({ siteName }: FooterProps) {
       </div>
       <div className="footer-affiliation">
         <span className="footer-affiliation-label">Affiliée à</span>
-        <a href="https://www.ulaval.ca" target="_blank" rel="noopener noreferrer" className="footer-ulaval">
-          <span className="footer-ulaval-mark">UL</span>
-          <span className="footer-ulaval-text">Université Laval<small>Québec, Canada</small></span>
+        <a href="https://www.ulaval.ca" target="_blank" rel="noopener noreferrer" className="footer-ulaval" aria-label="Site de l'Université Laval">
+          <img src="/images/partners/ulaval.svg" alt="Logo de l'Université Laval" className="footer-ulaval-logo" />
         </a>
       </div>
       <div className="footer-copy">
