@@ -61,7 +61,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
         <div className="prose" dangerouslySetInnerHTML={{ __html: contentHtml }} />
         {fm.registrationUrl && (
           <div style={{ marginTop: '2rem' }}>
-            <a href={fm.registrationUrl} className="btn-glow btn-orange" target="_blank" rel="noopener">
+            <a href={fm.registrationUrl} className="btn-glow btn-orange" target="_blank" rel="noopener noreferrer">
               S&apos;inscrire →
             </a>
           </div>

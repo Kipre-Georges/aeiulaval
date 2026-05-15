@@ -235,12 +235,12 @@ function SectionContact({ general, sec }: any) {
             </a>
           )}
           {general.social?.instagram && (
-            <a href={general.social.instagram} className="cta-btn cta-btn-glass" target="_blank" rel="noopener">
+            <a href={general.social.instagram} className="cta-btn cta-btn-glass" target="_blank" rel="noopener noreferrer">
               📸 Instagram
             </a>
           )}
           {general.social?.facebook && (
-            <a href={general.social.facebook} className="cta-btn cta-btn-glass" target="_blank" rel="noopener">
+            <a href={general.social.facebook} className="cta-btn cta-btn-glass" target="_blank" rel="noopener noreferrer">
               📘 Facebook
             </a>
           )}

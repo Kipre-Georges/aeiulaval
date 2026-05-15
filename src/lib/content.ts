@@ -2,7 +2,18 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
-import html from 'remark-html';
+import remarkRehype from 'remark-rehype';
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
+import rehypeStringify from 'rehype-stringify';
+
+// Allow safe HTML from markdown + permit target/rel on links
+const sanitizeSchema: any = {
+  ...defaultSchema,
+  attributes: {
+    ...defaultSchema.attributes,
+    a: [...(defaultSchema.attributes?.a || []), ['target'], ['rel']],
+  },
+};
 
 const contentDir = path.join(process.cwd(), 'content');
 
@@ -32,7 +43,11 @@ export async function getMarkdownWithHtml(folder: string, slug: string) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
   
-  const processedContent = await remark().use(html).process(content);
+  const processedContent = await remark()
+    .use(remarkRehype)
+    .use(rehypeSanitize, sanitizeSchema)
+    .use(rehypeStringify)
+    .process(content);
   
   return {
     frontmatter: data,
