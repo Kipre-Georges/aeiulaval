@@ -485,6 +485,40 @@ footer { background: #F0F0F0; padding: 3rem 3rem 2rem; border-top: 1px solid var
 html, body { max-width: 100vw; overflow-x: hidden; }
 img, video { max-width: 100%; height: auto; }
 
+/* ═══ PERF: lazy-render off-screen sections ═══ */
+section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
+}
+
+/* ═══ PERF: GPU acceleration on animated elements ═══ */
+.orb, .bureau-orb, .bureau-stars, .bureau-mega-photo::before, .bureau-mega-border, .akwaba-badge {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* ═══ PERF: respect reduced motion ═══ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ═══ PERF: disable heavy effects on mobile ═══ */
+@media (max-width: 768px) {
+    .bureau-stars,
+    .bureau-mega-photo::before,
+    .bureau-orb-3 {
+        animation: none !important;
+    }
+    .bureau-orb { filter: blur(40px); opacity: 0.35; }
+    nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .hero-card { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+}
+
 @media (max-width: 1024px) {
     .hero h1 { font-size: 3.5rem; }
     .sec-header h2 { font-size: 2.4rem; }
