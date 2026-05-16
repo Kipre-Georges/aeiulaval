@@ -7,7 +7,17 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 }
 
-const DISMISS_KEY = 'aeiulaval-pwa-dismissed';
+const DISMISS_KEY = 'aeiulaval-pwa-dismissed-at';
+const DISMISS_TTL_DAYS = 7;
+
+function wasRecentlyDismissed(): boolean {
+  const ts = localStorage.getItem(DISMISS_KEY);
+  if (!ts) return false;
+  const dismissedAt = parseInt(ts, 10);
+  if (isNaN(dismissedAt)) return false;
+  const ageMs = Date.now() - dismissedAt;
+  return ageMs < DISMISS_TTL_DAYS * 24 * 60 * 60 * 1000;
+}
 
 export default function InstallPrompt() {
   const [deferred, setDeferred] = useState<BeforeInstallPromptEvent | null>(null);
@@ -23,7 +33,8 @@ export default function InstallPrompt() {
 
     // Already installed?
     if (window.matchMedia('(display-mode: standalone)').matches) return;
-    if (localStorage.getItem(DISMISS_KEY)) return;
+    if ((window.navigator as any).standalone === true) return;
+    if (wasRecentlyDismissed()) return;
 
     // Detect iOS (no beforeinstallprompt support)
     const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
@@ -56,7 +67,7 @@ export default function InstallPrompt() {
   };
 
   const dismiss = () => {
-    localStorage.setItem(DISMISS_KEY, '1');
+    localStorage.setItem(DISMISS_KEY, String(Date.now()));
     setVisible(false);
     setShowIOSHint(false);
   };

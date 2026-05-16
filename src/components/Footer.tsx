@@ -1,3 +1,5 @@
+import SubscribeButton from './SubscribeButton';
+
 interface FooterProps {
   siteName: string;
 }
@@ -25,6 +27,10 @@ export default function Footer({ siteName }: FooterProps) {
           <a href="/galerie">Galerie</a>
           <a href="/#contact">Contact</a>
         </div>
+      </div>
+      <div className="footer-subscribe">
+        <SubscribeButton />
+        <small>Reste informé des prochains événements en temps réel.</small>
       </div>
       <div className="footer-affiliation">
         <span className="footer-affiliation-label">Affiliée à</span>

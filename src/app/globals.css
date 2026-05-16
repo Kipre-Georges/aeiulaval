@@ -466,6 +466,36 @@ footer { background: #F0F0F0; padding: 3rem 3rem 2rem; border-top: 1px solid var
 .footer-brand-text span { font-family: var(--font-heading); font-weight: 800; color: #1A1A1A; font-size: 0.95rem; line-height: 1.1; }
 .footer-brand-text small { font-size: 0.7rem; color: var(--text-dimmer); font-weight: 500; }
 
+/* Subscribe to notifications */
+.footer-subscribe {
+    max-width: 1200px;
+    margin: 1.75rem auto 0;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--dark-border);
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.5rem;
+    text-align: center;
+}
+.footer-subscribe small {
+    font-size: 0.75rem;
+    color: var(--text-dimmer);
+}
+.footer-subscribe-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    background: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.footer-subscribe-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,107,43,0.35); }
+.footer-subscribe-btn:active { transform: translateY(0); }
+
 /* Affiliation Université Laval */
 .footer-affiliation {
     max-width: 1200px;
