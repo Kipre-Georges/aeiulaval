@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { getSettings } from '@/lib/content';
 import InstallPrompt from '@/components/InstallPrompt';
 import OneSignalProvider from '@/components/OneSignalProvider';
+import ForegroundToast from '@/components/ForegroundToast';
 
 const siteUrl = 'https://ivoirienlaval.netlify.app';
 
@@ -111,6 +112,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <InstallPrompt />
         <OneSignalProvider />
+        <ForegroundToast />
         <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="afterInteractive" />
         <Script id="netlify-identity-redirect" strategy="afterInteractive">
           {`
