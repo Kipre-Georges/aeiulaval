@@ -28,6 +28,22 @@ export default function OneSignalProvider() {
               appId: "${APP_ID}",
               serviceWorkerPath: "OneSignalSDKWorker.js",
               serviceWorkerParam: { scope: "/" },
+              promptOptions: {
+                slidedown: {
+                  prompts: [
+                    {
+                      type: "push",
+                      autoPrompt: true,
+                      text: {
+                        actionMessage: "Active les notifications pour rester au courant des événements de la famille AEIULAVAL 🇨🇮",
+                        acceptButton: "Je m'abonne",
+                        cancelButton: "Plus tard",
+                      },
+                      delay: { pageViews: 1, timeDelay: 4 },
+                    },
+                  ],
+                },
+              },
               notifyButton: {
                 enable: true,
                 size: 'medium',
@@ -68,6 +84,21 @@ export default function OneSignalProvider() {
               },
               allowLocalhostAsSecureOrigin: true,
             });
+
+            // Force prompt when launched from PWA home screen if not subscribed yet
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+              || (window.navigator).standalone === true;
+            if (isStandalone) {
+              setTimeout(async () => {
+                try {
+                  const optedIn = await OneSignal.User.PushSubscription.optedIn;
+                  const permission = OneSignal.Notifications.permission;
+                  if (!optedIn && permission !== 'denied') {
+                    await OneSignal.Slidedown.promptPush({ force: true });
+                  }
+                } catch (e) { /* fail silently */ }
+              }, 3000);
+            }
           });
         `}
       </Script>

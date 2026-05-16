@@ -1,4 +1,4 @@
-// AEIULAVAL Service Worker — OneSignal push + offline cache
+ // AEIULAVAL Service Worker — OneSignal push + offline cache
 // IMPORTANT: OneSignal SDK must be imported FIRST
 importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');
 
