@@ -18,6 +18,8 @@ const EXEMPT_PREFIXES = [
   '/admin',
   '/images/',
   '/.netlify/',
+  '/_next/',          // Next.js bundles, CSS, fonts
+  '/__nextjs_',       // Next.js dev/runtime
 ];
 const EXEMPT_EXACT = new Set([
   '/sw.js',
@@ -32,6 +34,9 @@ const EXEMPT_EXACT = new Set([
   '/__access',
 ]);
 
+// Exempt static assets by extension (Next.js can also serve fonts/images at root)
+const STATIC_EXT_RE = /\.(js|css|map|woff2?|ttf|eot|svg|png|jpe?g|gif|webp|avif|ico|json|xml|txt|wasm|mp3|mp4|webm|ogg|pdf)$/i;
+
 async function sha256Hex(input: string): Promise<string> {
   const data = new TextEncoder().encode(input);
   const buf = await crypto.subtle.digest('SHA-256', data);
@@ -40,7 +45,9 @@ async function sha256Hex(input: string): Promise<string> {
 
 function isExempt(pathname: string): boolean {
   if (EXEMPT_EXACT.has(pathname)) return true;
-  return EXEMPT_PREFIXES.some(p => pathname.startsWith(p));
+  if (EXEMPT_PREFIXES.some(p => pathname.startsWith(p))) return true;
+  if (STATIC_EXT_RE.test(pathname)) return true;
+  return false;
 }
 
 function loginPage({ error = false, returnTo = '/' }: { error?: boolean; returnTo?: string }): Response {
