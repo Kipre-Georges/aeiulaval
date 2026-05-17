@@ -91,7 +91,41 @@ export default function OneSignalProvider() {
 
               console.log('[OneSignal] Initialized successfully');
 
-              // Always try to prompt push if user is not subscribed and not blocked
+              // ─── Auto re-sync stale subscriptions ───
+              // If the browser has the push permission granted but OneSignal lost track
+              // of the device (e.g. user was deleted from the dashboard), force a resync
+              // by toggling opt-out + opt-in so the device reappears in Audience.
+              setTimeout(async () => {
+                try {
+                  const permission = OneSignal.Notifications.permission;
+                  if (permission !== 'granted' && permission !== true) return;
+
+                  let optedIn = false;
+                  try { optedIn = await Promise.resolve(OneSignal.User.PushSubscription.optedIn); } catch (e) {}
+
+                  let subId = null;
+                  try { subId = await Promise.resolve(OneSignal.User.PushSubscription.id); } catch (e) {}
+
+                  console.log('[OneSignal] resync check — permission:', permission, '| optedIn:', optedIn, '| subId:', subId);
+
+                  // Browser is allowed but OneSignal has no record → force resync
+                  if (permission === 'granted' && (!optedIn || !subId)) {
+                    console.log('[OneSignal] Stale subscription detected, forcing resync...');
+                    try { await OneSignal.User.PushSubscription.optOut(); } catch (e) {}
+                    await new Promise(r => setTimeout(r, 300));
+                    try {
+                      await OneSignal.User.PushSubscription.optIn();
+                      console.log('[OneSignal] Resync done — device re-registered.');
+                    } catch (e) {
+                      console.warn('[OneSignal] optIn failed during resync:', e);
+                    }
+                  }
+                } catch (e) {
+                  console.warn('[OneSignal] Resync check failed:', e);
+                }
+              }, 2000);
+
+              // ─── Auto prompt for new visitors ───
               setTimeout(async () => {
                 try {
                   const permission = OneSignal.Notifications.permission;
@@ -101,9 +135,9 @@ export default function OneSignalProvider() {
                     optedIn = await Promise.resolve(result);
                   } catch (e) { optedIn = false; }
 
-                  console.log('[OneSignal] permission:', permission, '| optedIn:', optedIn);
+                  console.log('[OneSignal] prompt check — permission:', permission, '| optedIn:', optedIn);
 
-                  if (!optedIn && permission !== 'denied' && permission !== true) {
+                  if (!optedIn && permission !== 'denied' && permission !== true && permission !== 'granted') {
                     await OneSignal.Slidedown.promptPush({ force: true });
                     console.log('[OneSignal] Slidedown prompt shown');
                   }
