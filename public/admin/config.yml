@@ -174,6 +174,32 @@ collections:
       - { name: "order", label: "Ordre d'affichage", widget: "number", value_type: "int", min: 1 }
       - { name: "category", label: "Catégorie", widget: "select", options: ["Logement", "Immigration", "Vie quotidienne", "Emploi", "Académique", "Santé"] }
 
+  # ═══ PETITES ANNONCES ═══
+  - name: "annonces"
+    label: "📌 Petites annonces"
+    folder: "content/annonces"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    sortable_fields: ["publishedDate"]
+    summary: "{{title}} — {{category}}"
+    fields:
+      - { name: "title", label: "Titre", widget: "string", hint: "Ex: Cherche colocataire à Sainte-Foy" }
+      - name: "category"
+        label: "Catégorie"
+        widget: "select"
+        options: ["Logement", "Colocation", "Covoiturage", "Vente", "Service", "Cours/Tutorat", "Recherche"]
+      - { name: "type", label: "Type", widget: "select", options: ["Offre", "Demande"], default: "Offre" }
+      - { name: "price", label: "Prix (optionnel)", widget: "string", required: false, hint: "Ex: 450 $/mois, 80 $ négociable, Gratuit..." }
+      - { name: "location", label: "Lieu / Quartier", widget: "string", required: false, hint: "Ex: Sainte-Foy, Centre-ville, Limoilou..." }
+      - { name: "contact", label: "Contact", widget: "string", hint: "Email, numéro WhatsApp, ou téléphone" }
+      - { name: "contactType", label: "Type de contact", widget: "select", options: ["email", "whatsapp", "telephone"], default: "email" }
+      - { name: "publishedDate", label: "Date de publication", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { name: "expiresAt", label: "Date d'expiration", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, hint: "L'annonce disparaît automatiquement après cette date" }
+      - { name: "author", label: "Auteur / Membre", widget: "string", required: false }
+      - { name: "image", label: "Photo (optionnel)", widget: "image", required: false }
+      - { name: "imageAlt", label: "Description de la photo (accessibilité)", widget: "string", required: false }
+      - { name: "body", label: "Description détaillée", widget: "markdown" }
+
   # ═══ ACTUALITÉS / BLOG ═══
   - name: "blog"
     label: "📰 Actualités"

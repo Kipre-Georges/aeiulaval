@@ -22,6 +22,7 @@ export default function Footer({ siteName }: FooterProps) {
         <div className="footer-nav">
           <a href="/#about">À propos</a>
           <a href="/evenements">Événements</a>
+          <a href="/annonces">Annonces</a>
           <a href="/ressources">Ressources</a>
           <a href="/blog">Blog</a>
           <a href="/galerie">Galerie</a>

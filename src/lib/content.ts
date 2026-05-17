@@ -104,6 +104,23 @@ export function getBlogPosts() {
     .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
+export function getAnnonces() {
+  const items = getMarkdownFiles('annonces');
+  const now = new Date();
+  return items
+    .map(a => ({
+      slug: a.slug,
+      ...a.frontmatter,
+      content: a.content,
+    }))
+    .filter((a: any) => {
+      // hide expired
+      if (!a.expiresAt) return true;
+      return new Date(a.expiresAt) >= now;
+    })
+    .sort((a: any, b: any) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
+}
+
 export function getGallery() {
   const albums = getMarkdownFiles('gallery');
   return albums

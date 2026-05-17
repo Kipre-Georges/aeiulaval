@@ -40,6 +40,7 @@ export default function Nav({ siteName }: NavProps) {
       <ul id="primary-navigation" className={`nav-links ${menuOpen ? 'open' : ''}`}>
         <li><a href="/#about" onClick={() => setMenuOpen(false)}>À propos</a></li>
         <li><a href="/evenements" onClick={() => setMenuOpen(false)}>Événements</a></li>
+        <li><a href="/annonces" onClick={() => setMenuOpen(false)}>Annonces</a></li>
         <li><a href="/ressources" onClick={() => setMenuOpen(false)}>Ressources</a></li>
         <li><a href="/blog" onClick={() => setMenuOpen(false)}>Blog</a></li>
         <li><a href="/galerie" onClick={() => setMenuOpen(false)}>Galerie</a></li>

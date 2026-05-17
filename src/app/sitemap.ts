@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getEvents, getBlogPosts, getResources, getGallery } from '@/lib/content';
+import { getEvents, getBlogPosts, getResources, getGallery, getAnnonces } from '@/lib/content';
 
 const BASE = 'https://ivoirienlaval.netlify.app';
 
@@ -12,12 +12,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/ressources`,  changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/blog`,        changeFrequency: 'weekly',  priority: 0.7 },
     { url: `${BASE}/galerie`,     changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE}/annonces`,    changeFrequency: 'daily',   priority: 0.7 },
   ];
+
+  const annonces  = getAnnonces().map((a: any)  => ({ url: `${BASE}/annonces/${a.slug}`,    lastModified: new Date(a.publishedDate), changeFrequency: 'weekly' as const, priority: 0.6 }));
 
   const events    = getEvents().map((e: any)    => ({ url: `${BASE}/evenements/${e.slug}`, lastModified: new Date(e.date), changeFrequency: 'monthly' as const, priority: 0.7 }));
   const posts     = getBlogPosts().map((p: any) => ({ url: `${BASE}/blog/${p.slug}`,        lastModified: new Date(p.date), changeFrequency: 'monthly' as const, priority: 0.6 }));
   const resources = getResources().map((r: any) => ({ url: `${BASE}/ressources/${r.slug}`,  changeFrequency: 'monthly' as const, priority: 0.6 }));
   const albums    = getGallery().map((a: any)   => ({ url: `${BASE}/galerie/${a.slug}`,     lastModified: new Date(a.date), changeFrequency: 'monthly' as const, priority: 0.5 }));
 
-  return [...staticPages, ...events, ...posts, ...resources, ...albums];
+  return [...staticPages, ...events, ...posts, ...resources, ...albums, ...annonces];
 }
