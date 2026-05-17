@@ -6,6 +6,15 @@
   package = "@netlify/plugin-nextjs"
 
 # ════════════════════════════════════════════════════════════════
+# SITE-WIDE PASSWORD GATE (edge function)
+# Activation: set SITE_PASSWORD env var on Netlify.
+# Deactivation: remove SITE_PASSWORD env var. Gate is bypassed.
+# ════════════════════════════════════════════════════════════════
+[[edge_functions]]
+  function = "gate"
+  path = "/*"
+
+# ════════════════════════════════════════════════════════════════
 # SECURITY HEADERS — applied to all routes
 # ════════════════════════════════════════════════════════════════
 [[headers]]
